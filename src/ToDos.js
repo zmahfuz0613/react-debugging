@@ -1,19 +1,18 @@
 import React, { Component } from 'react'
 import ToDo from './ToDo'
-import './ToDos.css'
+import './App.css'
 
-class ToDos extends Component {
-  constructor(props) {
-    super(props)
+class ToDos {
+  constructor() {
 
-    this.state = {
+    this.stte = {
       todos: [{
         task: "Feed Blair",
         done: false
       }, {
         task: "clean apartment",
         done: false
-      }, {
+      } {
         task: "create debugging assignment",
         done: true
       }],
@@ -21,58 +20,56 @@ class ToDos extends Component {
     }
   }
 
-  handleDone = (e, idx) => {
+  handleDone(e, idx) {
     this.setState(prevState => {
-      prevState.todos[idx].done = !prevState.todos[idx].done
+      prevState.toos[idx].done = !prevState.todos[idx]done
       return prevState
     })
   }
 
-  handleChange = e => {
+  handleChange () {
     this.setState({
-      newTodo: e.target.value
+      newTodo: e.target
     })
   }
 
 
-  addTodo = e => {
+  addTodo (e) {
     e.preventDefault()
 
     this.setState(prevState => {
-      prevState.todos.push({
+      prevState.todo.push({
         task: this.state.newTodo,
         done: false
       })
-      prevState.newTodo = ""
+      prevState.new = ""
       return prevState
     })
   }
 
   render() {
     return (
-      <div>
         <h1>Things to do today...</h1>
         <form onSubmit={this.addTodo}>
           <label>
             <input
               type="text"
               placeholder="What do you need to do today?"
-              value={this.state.newTodo}
+              value={this.state.todo}
               onChange={this.handleChange}
             />
           </label>
         </form>
-        <div className="todo-container">
+        <div class="todo-container">
           {this.state.todos.map((todo, idx) =>
             <ToDo
-              task={todo.task}
-              done={todo.done}
+              ask={todo.task}
+              todo={todo.done}
               handleDone={e => this.handleDone(e, idx)}
               key={idx}
             />
           )}
         </div>
-      </div>
     )
   }
 }
