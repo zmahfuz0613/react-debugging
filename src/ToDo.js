@@ -2,8 +2,11 @@ import React from 'react'
 
 function ToDo(props) {
   return (
-    <h2 checked={props.todo} className="todo"
-      onClick={props.handledone} style={{ text-decoration: props.done ? "line-through" : "none" }}>{props.task}</h2>
+    <h2 style={{
+      textDecoration: props.done ? "line-through" : "none",
+    }} className="todo" onClick={props.handleDone}>
+      {props.task}
+    </h2>
 
   )
 }
